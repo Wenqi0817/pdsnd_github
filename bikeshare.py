@@ -18,7 +18,7 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     while True:
         try:
-            city = str(input("Would you like to see data for Chicago, New York City, or Washington? ")).lower()
+            city = str(input("Please select which city would you like to search? Chicago, New York City, or Washington? ")).lower()
             if (city != 'chicago') and (city != 'new york city') and (city != 'washington'):
                 print('Your finding is not in the database, please enter a valid city name!')
                 continue
