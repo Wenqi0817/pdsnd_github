@@ -1,6 +1,5 @@
 import time
 import pandas as pd
-import numpy as np
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
@@ -16,10 +15,9 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         try:
-            city = str(input("Would you like to see data for Chicago, New York City, or Washington? ")).lower()
+            city = str(input("Please select which city would you like to search? Chicago, New York City, or Washington? ")).lower()
             if (city != 'chicago') and (city != 'new york city') and (city != 'washington'):
                 print('Your finding is not in the database, please enter a valid city name!')
                 continue
@@ -29,7 +27,6 @@ def get_filters():
             print("You input is invalid, please try again.")
             continue
 
-    # TO DO: get user input for month (all, january, february, ... , june)
     while True:
         try:
             month = str(input("Which month would you want to access? ")).lower()
@@ -42,7 +39,6 @@ def get_filters():
             print("You input is invalid, please try again.")
             continue
 
-# TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         try:
             day = str(input("Which day of week would you want to access? ")).lower()
@@ -86,14 +82,14 @@ def load_data(city, month, day):
         # filter by month to create the new dataframe
         df = df[df['month'] == month]
     else:
-        df 
-        
+        df
+
     # filter by day of week if applicable
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
     else:
-        df 
+        df
     return df
 
 
@@ -111,7 +107,7 @@ def time_stats(df):
     # find the most common month
     most_common_month = df['month'].mode()[0]
     print('Most common month of travel:', most_common_month)
-    
+
     # TO DO: display the most common day of week
     # extract day of week from Start Time to create new columns
     df['day_of_week'] = df['Start Time'].dt.weekday_name
@@ -148,7 +144,7 @@ def station_stats(df):
     combination = df['Start Station'] + ' to ' + df['End Station']
     most_fre_comb = combination.mode()[0]
     print('The most frequent combination of start station and end station trip is {}.'.format( most_fre_comb))
-    
+
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -167,7 +163,7 @@ def trip_duration_stats(df):
     # TO DO: display mean travel time
     average_travel_time = df['Trip Duration'].mean()
     print('Average travel time is {} seconds.'.format(average_travel_time))
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -201,7 +197,7 @@ def user_stats(df):
         print('The most common year of birth is {}.'.format(most_common_birth_year))
     except KeyError:
         print('This file does not contain birth year column!')
-   
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 #get raw data function
@@ -216,14 +212,14 @@ def get_raw_data(df):
                 continue
             elif get_data != 'no':
                 print('invaid input, please enter again!')
-                continue            
+                continue
             else:
                 break
         except ValueError:
             print("You input is invalid, please try again.")
             continue
-     
-                   
+
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -234,7 +230,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         get_raw_data(df)
-        
+
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
