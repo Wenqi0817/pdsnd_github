@@ -12,4 +12,4 @@ My project is using Python to explore the US bikeshare data. We are focusing on 
 Files used in this project are chicago.csv, new_york_city.csv, washington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+The repo of this project is forked from https://github.com/udacity/pdsnd_github.git
